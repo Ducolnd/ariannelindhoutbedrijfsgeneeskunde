@@ -1,0 +1,18 @@
+# Project Context
+This is a Next.js 16+ project using React 19, TypeScript, and Tailwind CSS 4.
+
+# Package Manager
+- Strictly use **Bun** for all package management and script execution.
+- Do NOT use npm, yarn, or pnpm.
+- Use `bun install`, `bun add`, `bun run dev`, etc.
+- When running scripts, prefer `bun --bun <command>` if applicable as seen in package.json.
+
+# Code Style
+- Use TypeScript for all code.
+- Prefer functional components with hooks.
+- Use Tailwind CSS for styling.
+- Keep components small and focused.
+
+# Environment
+- This project is configured to use Bun. Ensure all terminal commands suggested use `bun`.
+

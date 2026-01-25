@@ -1,26 +1,172 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Primary medical blue */
+  --color-medical: #009CC6;
+  --color-medical-dark: #007A9E;
+  --color-medical-light: #E6F7FB;
+  --color-medical-50: #F0FAFC;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Warm neutrals for a professional, approachable feel */
+  --color-slate-950: #0B1215;
+  --color-slate-900: #1A2428;
+  --color-slate-800: #2D3B41;
+  --color-slate-700: #445660;
+  --color-slate-600: #5C7180;
+  --color-slate-500: #7A909D;
+  --color-slate-400: #9FB0BA;
+  --color-slate-300: #C4D1D8;
+  --color-slate-200: #E2E9EC;
+  --color-slate-100: #F3F6F7;
+  --color-slate-50: #F9FAFB;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Cream/warm white for softer backgrounds */
+  --color-cream: #FDFCFA;
+  --color-cream-dark: #F7F5F2;
+
+  --color-background: #FFFFFF;
+  --color-text-primary: #1A2428;
+  --color-text-secondary: #5C7180;
+
+  --font-sans: var(--font-source-serif), Georgia, 'Times New Roman', serif;
+  --font-display: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+/* Typography with a refined, editorial feel */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: #009CC6;
+  color: white;
+}
+
+/* Refined link underlines */
+.link-underline {
+  text-decoration: none;
+  background-image: linear-gradient(#009CC6, #009CC6);
+  background-size: 0% 2px;
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+
+.link-underline:hover {
+  background-size: 100% 2px;
+}
+
+/* Subtle texture overlay for hero sections */
+.texture-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Soft gradient for cards */
+.card-glow {
+  box-shadow:
+    0 1px 2px rgba(0, 156, 198, 0.02),
+    0 4px 8px rgba(0, 156, 198, 0.03),
+    0 8px 16px rgba(0, 156, 198, 0.04);
+}
+
+.card-glow:hover {
+  box-shadow:
+    0 1px 2px rgba(0, 156, 198, 0.03),
+    0 4px 12px rgba(0, 156, 198, 0.04),
+    0 8px 20px rgba(0, 156, 198, 0.05);
+}
+
+/* Refined button styles */
+.btn-primary {
+  background-color: #009CC6;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #007A9E;
+  transform: translateY(-1px);
+}
+
+/* Medical accent line */
+.accent-line {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #009CC6, #009CC6);
+  border-radius: 2px;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+
+/* Image treatment */
+.image-professional {
+  filter: contrast(1.02) saturate(0.95);
+}
+
+/* Stethoscope pattern background */
+.bg-medical-pattern {
+  background-color: #F0FAFC;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(0, 156, 198, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 156, 198, 0.03) 0%, transparent 50%);
+}
+
+/* Pulse animation for availability indicator */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Parallax background effect */
+.parallax-container {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* Disable parallax on iOS as it doesn't support background-attachment: fixed well */
+  .parallax-container {
+    background-attachment: scroll;
+  }
 }

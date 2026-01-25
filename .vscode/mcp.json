@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"firecrawl": {
+			"url": "https://mcp.firecrawl.dev/fc-242ffa1b448d4953a5fff75f6033c714/v2/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}
