@@ -1,7 +1,23 @@
+import type { Metadata } from "next";
 import { Section } from "../components/Section";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Shield, HeartHandshake, CheckCircle2 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Diensten",
+  description:
+    "Bedrijfsgeneeskundige diensten: preventieve begeleiding, verzuimbegeleiding en reïntegratie. PAGO/PMO, RI&E advies en arbeidsomstandighedenspreekuur.",
+  openGraph: {
+    title: "Diensten | Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Bedrijfsgeneeskundige diensten: preventieve begeleiding, verzuimbegeleiding en reïntegratie.",
+    images: ["/arianne-diensten-v22.jpg"],
+  },
+  alternates: {
+    canonical: "/diensten",
+  },
+};
 
 export default function Diensten() {
   return (

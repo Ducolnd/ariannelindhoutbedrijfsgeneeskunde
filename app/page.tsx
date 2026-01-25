@@ -10,10 +10,45 @@ import {
   Mail,
   Linkedin,
 } from "lucide-react";
+import { JsonLd } from "./components/JsonLd";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Arianne Lindhout Bedrijfsgeneeskunde",
+  url: process.env.NEXT_PUBLIC_BASE_URL || "https://lindhoutbedrijfsgeneeskunde.nl",
+  description:
+    "Geregistreerd bedrijfsarts voor begeleiding van ziekteverzuim, reïntegratie en preventie.",
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  name: "Arianne Lindhout Bedrijfsgeneeskunde",
+  description:
+    "Geregistreerd bedrijfsarts voor begeleiding van ziekteverzuim, reïntegratie en preventie. Samen op weg naar gezondheid.",
+  url: process.env.NEXT_PUBLIC_BASE_URL || "https://lindhoutbedrijfsgeneeskunde.nl",
+  telephone: "+31653124278",
+  email: "arianne@lindhoutbedrijfsgeneeskunde.nl",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Zeist",
+    addressRegion: "Utrecht",
+    addressCountry: "NL",
+  },
+  areaServed: {
+    "@type": "Place",
+    name: "Utrecht en omgeving",
+  },
+  priceRange: "$$",
+  sameAs: ["https://www.linkedin.com/in/arianne-lindhout"],
+};
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={websiteSchema} />
+      <JsonLd data={localBusinessSchema} />
       {/* Hero Section - Light with Image */}
       <section className="relative bg-white overflow-hidden">
         {/* Background Image with Overlay */}

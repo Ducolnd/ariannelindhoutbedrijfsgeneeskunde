@@ -1,6 +1,22 @@
+import type { Metadata } from "next";
 import { Section } from "../components/Section";
 import Image from "next/image";
 import { Users, Shield, Heart } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Werkwijze",
+  description:
+    "Werkwijze van bedrijfsarts Arianne Lindhout: eigen regiemodel, persoonlijke aanpak en samenwerking. Investeren in langdurige relaties met organisaties.",
+  openGraph: {
+    title: "Werkwijze | Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Samenwerken aan gezondheid met het eigen regiemodel als uitgangspunt.",
+    images: ["/arianne-werkwijze.jpg"],
+  },
+  alternates: {
+    canonical: "/werkwijze",
+  },
+};
 
 export default function Werkwijze() {
   return (

@@ -17,8 +17,66 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Arianne Lindhout Bedrijfsgeneeskunde",
-  description: "Geregistreerd bedrijfsarts voor begeleiding van ziekteverzuim, reintegratie en preventie. Samen op weg naar gezondheid.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || "https://lindhoutbedrijfsgeneeskunde.nl"
+  ),
+  title: {
+    default: "Arianne Lindhout Bedrijfsgeneeskunde",
+    template: "%s | Arianne Lindhout Bedrijfsgeneeskunde",
+  },
+  description:
+    "Geregistreerd bedrijfsarts voor begeleiding van ziekteverzuim, reïntegratie en preventie. Samen op weg naar gezondheid. Regio Utrecht.",
+  keywords: [
+    "bedrijfsarts",
+    "bedrijfsgeneeskunde",
+    "ziekteverzuim",
+    "reïntegratie",
+    "preventie",
+    "arbodienst",
+    "Utrecht",
+    "Zeist",
+    "PAGO",
+    "PMO",
+    "RI&E",
+  ],
+  authors: [{ name: "Arianne Lindhout" }],
+  creator: "Arianne Lindhout",
+  publisher: "Arianne Lindhout Bedrijfsgeneeskunde",
+  openGraph: {
+    title: "Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Geregistreerd bedrijfsarts voor begeleiding van ziekteverzuim, reïntegratie en preventie. Samen op weg naar gezondheid.",
+    url: "/",
+    siteName: "Arianne Lindhout Bedrijfsgeneeskunde",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Arianne Lindhout Bedrijfsgeneeskunde",
+      },
+    ],
+    locale: "nl_NL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Geregistreerd bedrijfsarts voor begeleiding van ziekteverzuim, reïntegratie en preventie.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

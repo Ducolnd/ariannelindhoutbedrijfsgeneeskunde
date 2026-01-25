@@ -1,6 +1,22 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Over Arianne",
+  description:
+    "Over Arianne Lindhout: sinds 2005 geregistreerd bedrijfsarts met ervaring in diverse branches. BIG-geregistreerd en bestuurslid van de ZFB.",
+  openGraph: {
+    title: "Over Arianne | Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Sinds 2005 geregistreerd bedrijfsarts met ervaring in diverse branches.",
+    images: ["/over-arianne.jpg"],
+  },
+  alternates: {
+    canonical: "/over-arianne",
+  },
+};
 
 export default function OverArianne() {
   return (

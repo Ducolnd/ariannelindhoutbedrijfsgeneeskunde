@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Phone, Mail, Linkedin, MapPin, Shield, FileText } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Neem contact op met bedrijfsarts Arianne Lindhout. Telefoon: +31 6 53124278. E-mail: arianne@lindhoutbedrijfsgeneeskunde.nl. Regio Utrecht en omgeving.",
+  openGraph: {
+    title: "Contact | Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Neem contact op met bedrijfsarts Arianne Lindhout voor een kennismakingsgesprek.",
+    images: ["/zeist.jpeg"],
+  },
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function Contact() {
   return (
