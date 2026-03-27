@@ -3,6 +3,7 @@ import { Section } from "../components/Section";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Shield, HeartHandshake, CheckCircle2 } from "lucide-react";
+import { JsonLd } from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Diensten",
@@ -14,14 +15,77 @@ export const metadata: Metadata = {
       "Bedrijfsgeneeskundige diensten: preventieve begeleiding, verzuimbegeleiding en reïntegratie.",
     images: ["/arianne-diensten-v22.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Diensten | Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Bedrijfsgeneeskundige diensten: preventieve begeleiding, verzuimbegeleiding en reïntegratie.",
+    images: ["/arianne-diensten-v22.jpg"],
+  },
   alternates: {
     canonical: "/diensten",
+  },
+};
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://lindhoutbedrijfsgeneeskunde.nl";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: baseUrl,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Diensten",
+      item: `${baseUrl}/diensten`,
+    },
+  ],
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  name: "Arianne Lindhout Bedrijfsgeneeskunde",
+  url: `${baseUrl}/diensten`,
+  description:
+    "Bedrijfsgeneeskundige diensten: preventieve begeleiding, verzuimbegeleiding en reïntegratie.",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Bedrijfsgeneeskundige diensten",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Preventieve begeleiding",
+          description:
+            "Advisering over gezonde arbeidsomstandigheden, RI&E advies, PAGO/PMO uitvoering en arbeidsomstandighedenspreekuur.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Begeleiding bij arbeidsongeschiktheid",
+          description:
+            "Verzuimbegeleiding en reïntegratie: beoordelen van belastbaarheid, meedenken over passende aanpassingen en ondersteunen bij werkhervatting.",
+        },
+      },
+    ],
   },
 };
 
 export default function Diensten() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={serviceSchema} />
       {/* Hero Image - Full Width */}
       <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <Image
@@ -144,6 +208,45 @@ export default function Diensten() {
             Neem contact op
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>
+        </div>
+      </Section>
+
+      {/* Related Pages */}
+      <Section bg="white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-display font-bold text-slate-900 text-center mb-10">
+            Meer informatie
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link
+              href="/werkwijze"
+              className="group p-6 bg-cream rounded-xl border border-slate-100 hover:border-medical/20 transition-all"
+            >
+              <h3 className="text-lg font-display font-bold text-slate-900 mb-2 group-hover:text-medical transition-colors">
+                Mijn werkwijze
+              </h3>
+              <p className="text-slate-600 font-sans text-sm leading-relaxed">
+                Lees hoe ik werk volgens het eigen regiemodel en hoe samenwerking centraal staat in mijn aanpak.
+              </p>
+              <span className="inline-flex items-center text-medical font-display font-medium text-sm mt-3">
+                Bekijk werkwijze <ArrowRight className="w-4 h-4 ml-1" />
+              </span>
+            </Link>
+            <Link
+              href="/over-arianne"
+              className="group p-6 bg-cream rounded-xl border border-slate-100 hover:border-medical/20 transition-all"
+            >
+              <h3 className="text-lg font-display font-bold text-slate-900 mb-2 group-hover:text-medical transition-colors">
+                Over Arianne
+              </h3>
+              <p className="text-slate-600 font-sans text-sm leading-relaxed">
+                Meer dan 20 jaar ervaring als bedrijfsarts. Lees over mijn achtergrond en drijfveren.
+              </p>
+              <span className="inline-flex items-center text-medical font-display font-medium text-sm mt-3">
+                Lees meer <ArrowRight className="w-4 h-4 ml-1" />
+              </span>
+            </Link>
+          </div>
         </div>
       </Section>
     </>

@@ -111,19 +111,34 @@ export default function Home() {
 
               {/* Company Logos */}
               <div className="mt-6 pt-6 border-t border-slate-200">
-                <div className="flex items-center gap-8">
+                <p className="text-xs text-slate-400 uppercase tracking-widest font-display mb-4">Ervaring bij o.a.</p>
+                <div className="flex items-center gap-8 flex-wrap">
                   <Image
                     src="/logo-ns.svg"
                     alt="NS"
                     width={50}
-                    height={25}
+                    height={20}
                     className="opacity-40 grayscale hover:opacity-60 transition-opacity"
                   />
                   <Image
                     src="/logo-politie.svg"
                     alt="Politie"
+                    width={80}
+                    height={30}
+                    className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+                  />
+                  <Image
+                    src="/logo-efp.svg"
+                    alt="EFP - Expertisecentrum Forensische Psychiatrie"
+                    width={40}
+                    height={40}
+                    className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+                  />
+                  <Image
+                    src="/logo-che.svg"
+                    alt="CHE - Christelijke Hogeschool Ede"
                     width={70}
-                    height={25}
+                    height={40}
                     className="opacity-40 grayscale hover:opacity-60 transition-opacity"
                   />
                 </div>

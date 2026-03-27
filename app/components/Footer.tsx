@@ -38,6 +38,11 @@ export function Footer() {
                   Over Arianne
                 </Link>
               </li>
+              <li>
+                <Link href="/contact" className="hover:text-medical transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { JsonLd } from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Over Arianne",
@@ -13,20 +14,75 @@ export const metadata: Metadata = {
       "Sinds 2005 geregistreerd bedrijfsarts met ervaring in diverse branches.",
     images: ["/over-arianne.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Over Arianne | Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Sinds 2005 geregistreerd bedrijfsarts met ervaring in diverse branches.",
+    images: ["/over-arianne.jpg"],
+  },
   alternates: {
     canonical: "/over-arianne",
   },
 };
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://lindhoutbedrijfsgeneeskunde.nl";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: baseUrl,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Over Arianne",
+      item: `${baseUrl}/over-arianne`,
+    },
+  ],
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Arianne Lindhout",
+  jobTitle: "Bedrijfsarts",
+  description:
+    "Sinds 2005 geregistreerd bedrijfsarts met ervaring in diverse branches. BIG-geregistreerd en bestuurslid van de ZFB.",
+  url: `${baseUrl}/over-arianne`,
+  image: `${baseUrl}/over-arianne.jpg`,
+  worksFor: {
+    "@type": "MedicalBusiness",
+    name: "Arianne Lindhout Bedrijfsgeneeskunde",
+    url: baseUrl,
+  },
+  sameAs: ["https://www.linkedin.com/in/arianne-lindhout"],
+  knowsAbout: [
+    "Bedrijfsgeneeskunde",
+    "Ziekteverzuim",
+    "Reïntegratie",
+    "Preventie",
+    "Arbodienst",
+  ],
+};
+
 export default function OverArianne() {
   return (
-    <section className="relative bg-cream overflow-hidden">
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={personSchema} />
+      <section className="relative bg-cream overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center py-16 md:py-24">
           {/* Photo */}
           <div className="order-2 lg:order-1">
             <div className="relative">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="aspect-[3/5] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/over-arianne.jpg"
                   alt="Arianne Lindhout - Bedrijfsarts"
@@ -77,32 +133,86 @@ export default function OverArianne() {
         </div>
       </div>
 
-      {/* Placeholder Section */}
+      {/* Company Logos */}
+      <div className="bg-white py-12 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-xs text-slate-400 uppercase tracking-widest font-display mb-6">Ervaring bij o.a.</p>
+            <div className="flex items-center justify-center gap-10 flex-wrap">
+              <Image
+                src="/logo-ns.svg"
+                alt="NS"
+                width={50}
+                height={20}
+                className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+              />
+              <Image
+                src="/logo-politie.svg"
+                alt="Politie"
+                width={80}
+                height={30}
+                className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+              />
+              <Image
+                src="/logo-efp.svg"
+                alt="EFP - Expertisecentrum Forensische Psychiatrie"
+                width={40}
+                height={40}
+                className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+              />
+              <Image
+                src="/logo-che.svg"
+                alt="CHE - Christelijke Hogeschool Ede"
+                width={70}
+                height={40}
+                className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Related Pages */}
       <div className="bg-white py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              {/* Logo placeholder */}
-              <div className="flex-shrink-0">
-                <div className="w-32 h-32 md:w-40 md:h-40 bg-slate-100 rounded-2xl flex items-center justify-center border border-slate-200">
-                  <span className="text-slate-400 text-sm font-sans">Logo</span>
-                </div>
-              </div>
-
-              {/* Text content */}
-              <div>
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">
-                  Titel hier
-                </h2>
-                <p className="text-lg text-slate-600 leading-relaxed font-sans">
-                  Placeholder tekst. Hier komt een korte beschrijving of toelichting
-                  die je later kunt aanpassen.
+            <h2 className="text-2xl font-display font-bold text-slate-900 text-center mb-10">
+              Meer informatie
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Link
+                href="/diensten"
+                className="group p-6 bg-cream rounded-xl border border-slate-100 hover:border-medical/20 transition-all"
+              >
+                <h3 className="text-lg font-display font-bold text-slate-900 mb-2 group-hover:text-medical transition-colors">
+                  Mijn diensten
+                </h3>
+                <p className="text-slate-600 font-sans text-sm leading-relaxed">
+                  Van preventieve begeleiding tot verzuimbegeleiding en reïntegratie. Bekijk wat ik voor uw organisatie kan betekenen.
                 </p>
-              </div>
+                <span className="inline-flex items-center text-medical font-display font-medium text-sm mt-3">
+                  Bekijk diensten <ArrowRight className="w-4 h-4 ml-1" />
+                </span>
+              </Link>
+              <Link
+                href="/werkwijze"
+                className="group p-6 bg-cream rounded-xl border border-slate-100 hover:border-medical/20 transition-all"
+              >
+                <h3 className="text-lg font-display font-bold text-slate-900 mb-2 group-hover:text-medical transition-colors">
+                  Mijn werkwijze
+                </h3>
+                <p className="text-slate-600 font-sans text-sm leading-relaxed">
+                  Lees hoe ik werk met het eigen regiemodel en hoe samenwerking centraal staat.
+                </p>
+                <span className="inline-flex items-center text-medical font-display font-medium text-sm mt-3">
+                  Bekijk werkwijze <ArrowRight className="w-4 h-4 ml-1" />
+                </span>
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </section>
+    </>
   );
 }

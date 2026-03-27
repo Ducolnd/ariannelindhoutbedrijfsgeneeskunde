@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Section } from "../components/Section";
 import Image from "next/image";
-import { Users, Shield, Heart } from "lucide-react";
+import Link from "next/link";
+import { Users, Shield, Heart, ArrowRight } from "lucide-react";
+import { JsonLd } from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Werkwijze",
@@ -13,14 +15,58 @@ export const metadata: Metadata = {
       "Samenwerken aan gezondheid met het eigen regiemodel als uitgangspunt.",
     images: ["/arianne-werkwijze.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Werkwijze | Arianne Lindhout Bedrijfsgeneeskunde",
+    description:
+      "Samenwerken aan gezondheid met het eigen regiemodel als uitgangspunt.",
+    images: ["/arianne-werkwijze.jpg"],
+  },
   alternates: {
     canonical: "/werkwijze",
+  },
+};
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://lindhoutbedrijfsgeneeskunde.nl";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: baseUrl,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Werkwijze",
+      item: `${baseUrl}/werkwijze`,
+    },
+  ],
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Werkwijze - Arianne Lindhout Bedrijfsgeneeskunde",
+  url: `${baseUrl}/werkwijze`,
+  description:
+    "Werkwijze van bedrijfsarts Arianne Lindhout: eigen regiemodel, persoonlijke aanpak en samenwerking.",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Arianne Lindhout Bedrijfsgeneeskunde",
+    url: baseUrl,
   },
 };
 
 export default function Werkwijze() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={webPageSchema} />
       {/* Hero Image - Full Width (like diensten page) */}
       <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <Image
@@ -139,6 +185,58 @@ export default function Werkwijze() {
                 className="object-cover object-center"
               />
             </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* CTA + Related Pages */}
+      <Section bg="cream">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-display font-bold text-slate-900 mb-4">
+              Benieuwd hoe ik u kan helpen?
+            </h2>
+            <p className="text-lg text-slate-600 font-sans leading-relaxed mb-8">
+              Neem vrijblijvend contact op voor een kennismakingsgesprek.
+            </p>
+            <Link
+              href="/contact"
+              className="btn-primary inline-flex items-center justify-center px-8 py-4 text-base font-display font-medium rounded-lg group"
+            >
+              Neem contact op
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-12 pt-12 border-t border-slate-200">
+            <Link
+              href="/diensten"
+              className="group p-6 bg-white rounded-xl border border-slate-100 hover:border-medical/20 transition-all"
+            >
+              <h3 className="text-lg font-display font-bold text-slate-900 mb-2 group-hover:text-medical transition-colors">
+                Mijn diensten
+              </h3>
+              <p className="text-slate-600 font-sans text-sm leading-relaxed">
+                Van preventieve begeleiding tot verzuimbegeleiding en reïntegratie. Bekijk het volledige overzicht.
+              </p>
+              <span className="inline-flex items-center text-medical font-display font-medium text-sm mt-3">
+                Bekijk diensten <ArrowRight className="w-4 h-4 ml-1" />
+              </span>
+            </Link>
+            <Link
+              href="/over-arianne"
+              className="group p-6 bg-white rounded-xl border border-slate-100 hover:border-medical/20 transition-all"
+            >
+              <h3 className="text-lg font-display font-bold text-slate-900 mb-2 group-hover:text-medical transition-colors">
+                Over Arianne
+              </h3>
+              <p className="text-slate-600 font-sans text-sm leading-relaxed">
+                Lees meer over mijn achtergrond, ervaring en wat mij drijft als bedrijfsarts.
+              </p>
+              <span className="inline-flex items-center text-medical font-display font-medium text-sm mt-3">
+                Lees meer <ArrowRight className="w-4 h-4 ml-1" />
+              </span>
+            </Link>
           </div>
         </div>
       </Section>
