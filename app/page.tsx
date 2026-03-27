@@ -141,6 +141,27 @@ export default function Home() {
                     height={40}
                     className="opacity-40 grayscale hover:opacity-60 transition-opacity"
                   />
+                  <Image
+                    src="/logo-kwr.svg"
+                    alt="KWR Water Research Institute"
+                    width={70}
+                    height={25}
+                    className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+                  />
+                  <Image
+                    src="/logo-jordan.svg"
+                    alt="Jordan Montessori Lyceum Utrecht"
+                    width={80}
+                    height={20}
+                    className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+                  />
+                  <Image
+                    src="/logo-unilabs.svg"
+                    alt="Unilabs"
+                    width={60}
+                    height={20}
+                    className="opacity-40 grayscale hover:opacity-60 transition-opacity"
+                  />
                 </div>
               </div>
             </div>

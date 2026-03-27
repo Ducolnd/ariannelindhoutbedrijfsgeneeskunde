@@ -84,6 +84,11 @@ export function Footer() {
                   Klachtenprocedure
                 </Link>
               </li>
+              <li>
+                <Link href="/cookies" className="hover:text-medical transition-colors">
+                  Cookies
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
